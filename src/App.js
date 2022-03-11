@@ -6,9 +6,7 @@ import Main from "./Components/Main";
 function App() {
   return (
     <>
-      <NavBar />
       <Main />
-      <Footer />
     </>
   );
 }

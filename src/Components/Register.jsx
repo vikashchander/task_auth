@@ -42,7 +42,7 @@ function Register() {
                 <div className="form-outline  mb-3 m-2">
                   <input
                     type="email"
-                    id="formExample"
+                    id="formExample1"
                     placeholder="Enter Email Address"
                     name="email"
                     value={newUser.email}
@@ -67,7 +67,7 @@ function Register() {
                 <div className="form-outline mb-3 m-2">
                   <input
                     type="password"
-                    id="formExample"
+                    id="formExample2"
                     placeholder="Confirm Password"
                     name="password"
                     value={newUser.password}
@@ -75,7 +75,7 @@ function Register() {
                   />
                 </div>
 
-                <div class="text-center text-lg-start mt-4 pt-2">
+                <div className="text-center text-lg-start mt-4 pt-2">
                   <button
                     type="button"
                     className="btn btn-primary btn-lg"

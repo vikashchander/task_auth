@@ -27,3 +27,10 @@ export const loginData = (data) => async (dispatch) => {
     payload: data,
   });
 };
+
+export const LogOut = (data)=>async (dispatch)=>{
+   dispatch({
+     type:Data.isLogOut,
+     payload: data
+   })
+}

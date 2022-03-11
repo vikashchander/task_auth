@@ -20,6 +20,7 @@ const rootReducers = (state = initialState, action) => {
       return {
         ...state,
         usersDetails: state.usersDetails,
+        isLogin:false
       };
     case Data.isCheckLogin:
       const login = action.payload;
@@ -29,6 +30,15 @@ const rootReducers = (state = initialState, action) => {
       return {
         ...state,
         isLogin: isExist.length === 1,
+      };
+      case Data.isLogOut:{
+        const logout = action.payload;
+        console.log(logout);
+        const result  = logout !=="logout"
+        return{
+            ...state,
+            isLogin: result
+        }
       };
     default:
       return {

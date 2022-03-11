@@ -1,11 +1,38 @@
-import React from "react";
-import {Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+  useLocation,
+  Navigate,
+  Outlet,
+} from "react-router-dom";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
+import { loginData } from "../state/action-creators/actions";
 function Login() {
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+  let location = useLocation();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  let from = location.state?.from?.pathname || "/";
+  function handleInputs(e) {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  }
+  function handleLogin(e) {
+    const obj = user;
+    setUser({ email: "", password: "" });
+    dispatch(loginData(obj));
+    navigate('/fetch_with_auth')
+  }
   return (
     <>
-     <NavBar/>
+      <NavBar />
       <section className="vh-100">
         <div className="container-fluid h-custom">
           <div className="row d-flex justify-content-center align-items-center h-100">
@@ -24,6 +51,9 @@ function Login() {
                     type="email"
                     id="form3Example3"
                     placeholder="Enter Email Address"
+                    name="email"
+                    value={user.email}
+                    onChange={(e) => handleInputs(e)}
                   />
                 </div>
 
@@ -32,6 +62,9 @@ function Login() {
                     type="password"
                     id="form3Example4"
                     placeholder="Enter Password"
+                    name="password"
+                    value={user.password}
+                    onChange={(e) => handleInputs(e)}
                   />
                 </div>
 
@@ -39,13 +72,13 @@ function Login() {
                   <button
                     type="button"
                     className="btn btn-primary btn-lg"
+                    onClick={(e) => handleLogin(e)}
                     style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
                   >
                     Login
                   </button>
                   <p className="small fw-bold mt-2 pt-1 mb-0">
-                    Don't have an account?{" "}
-                    <Link to="/Register">Register</Link>
+                    Don't have an account? <Link to="/Register">Register</Link>
                   </p>
                 </div>
               </form>
@@ -53,7 +86,7 @@ function Login() {
           </div>
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </>
   );
 }
