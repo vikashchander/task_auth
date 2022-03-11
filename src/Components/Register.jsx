@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addNewUsersDetails } from "../state/action-creators/actions";
-import { Link } from "react-router-dom";
+  
+  import { Link,useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 
@@ -15,13 +16,14 @@ function Register() {
   function handleRegister(e) {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
   }
-
+  let navigate = useNavigate();
   function handleSubmit(e) {
     e.preventDefault();
     const obj = newUser;
     console.log(obj);
     setNewUser({ email: "", gender: "Gender", password: "" });
     dispatch(addNewUsersDetails(obj));
+    navigate('/login')
   }
   return (
     <>
