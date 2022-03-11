@@ -1,5 +1,4 @@
 import "./App.css";
-import { MDBBtn } from "mdb-react-ui-kit";
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 import Main from "./Components/Main";
